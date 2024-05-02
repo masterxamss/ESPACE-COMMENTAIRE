@@ -12,7 +12,7 @@
 */
 
 
-let bg = document.querySelector("form");
+const bg = document.querySelector("form");
 
 bg.addEventListener("submit",(e)=>{
   e.preventDefault();
