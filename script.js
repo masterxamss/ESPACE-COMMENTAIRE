@@ -11,7 +11,6 @@
      * Date : 02/05/2024  
 */
 
-
 const bg = document.querySelector("form");
 
 bg.addEventListener("submit",(e)=>{
@@ -41,17 +40,18 @@ function addMsg() {
     return false;
   }
   else{
-    // CONCATE NAME AND GET MESSAGE
-    setName.textContent = `${getFirstName} ${getLastName}`;
-    setMsg.textContent = document.getElementById("message").value;
-
+    // CONCATE NAME, GET MESSAGE AND REMOVE WHITE SPACES
+    setName.textContent = `${getFirstName.trim()} ${getLastName.trim()}`;
+    setMsg.textContent = document.getElementById("message").value.trim();
+    
     // SET ELEMENT HIERARCHY
     commentList.append(divChild1);
     divChild1.append(divChild2);
     divChild2.append(setName, divChild3);
     divChild3.append(setMsg);
-
-    clearForm();  
+    
+    document.querySelector("form").reset();
+    document.getElementById("error-message").style.display = "none";
   }
 }
 
@@ -71,10 +71,3 @@ function createElement(tag, className) {
   return element;
 }
 
-// FUNCTION TO CLEAR FORM
-function clearForm() {
-  document.getElementById("first-name").value = "";
-  document.getElementById("last-name").value = "";
-  document.getElementById("message").value = "";
-  document.getElementById("error-message").style.display = "none";
-}
